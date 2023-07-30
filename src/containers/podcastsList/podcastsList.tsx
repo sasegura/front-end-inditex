@@ -1,31 +1,33 @@
-import React, { useState, useEffect } from 'react';
-
-import { useGetPodcasts } from '../../hooks/useGetPodcast';
+import { Grid } from '@mui/material';
 import { Podcast } from '../../interfaces/podcast';
+import Podcasts from '../../components/podcast/podcasts';
+import SkeletonCardList from '../../components/skeletons/skeletonCardList';
+import usePodcastList from './usePodcastsList';
 
-const PodcastsList = () => {
-  const [podcasts, setPodcasts] = useState<Podcast[]>([]);
+function PodcastsList() {
+  const { podcasts, isLoading, onHandleClick } = usePodcastList();
 
-  const { data, isLoading } = useGetPodcasts();
-
-  useEffect(() => {
-    if (data?.feed?.entry && !isLoading) {
-      setPodcasts(data?.feed?.entry);
-    }
-  }, [data, isLoading]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <ul>
-          {isLoading
-            ? 'Loading'
-            : podcasts.map((podcast: Podcast, index: number) => (
-                <li key={index}>{podcast['im:name'].label}</li>
-              ))}
-        </ul>
-      </header>
-    </div>
+    <Grid container wrap="wrap">
+      {(isLoading ? Array.from(new Array(12)) : podcasts).map(
+        (podcast: Podcast, index: number) => (
+          <Grid key={index} item xs={3} sx={{ py: 5 }}>
+            {podcast ? (
+              <Podcasts
+                key={podcast.id.attributes['im:id']}
+                podcast={podcast}
+                onHandleClick={() =>
+                  onHandleClick(podcast.id.attributes['im:id'])
+                }
+              />
+            ) : (
+              <SkeletonCardList />
+            )}
+          </Grid>
+        )
+      )}
+    </Grid>
   );
-};
+}
 
 export default PodcastsList;
