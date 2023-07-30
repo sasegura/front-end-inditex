@@ -1,31 +1,22 @@
-import React, { useState, useEffect } from 'react';
-
 import './App.css';
-import { Podcast } from './interfaces/podcast';
-import { useGetPodcasts } from './hooks/useGetPodcast';
+import { Container } from '@mui/material';
+import { Route, Routes } from 'react-router-dom';
+import PodcastDetail from './containers/podcastDetail/podcastDetail';
+import PodcastsList from './containers/podcastsList/podcastsList';
+import EpisodeList from './containers/episodeList/episodeList';
+import EpisodeDetail from './containers/episodeDetail/episodeDetail';
 
 function App() {
-  const [podcasts, setPodcasts] = useState<Podcast[]>([]);
-
-  const { data, isLoading } = useGetPodcasts();
-
-  useEffect(() => {
-    if (data?.feed?.entry && !isLoading) {
-      setPodcasts(data?.feed?.entry);
-    }
-  }, [data, isLoading]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <ul>
-          {isLoading
-            ? 'Loading'
-            : podcasts.map((podcast: Podcast) => (
-                <li>{podcast['im:name'].label}</li>
-              ))}
-        </ul>
-      </header>
-    </div>
+    <Container maxWidth="lg">
+      <Routes>
+        <Route path="/" element={<PodcastsList />} />
+        <Route path="/podcast/:podcastId/" element={<PodcastDetail />}>
+          <Route path="" element={<EpisodeList />} />
+          <Route path="episode/:episodeId" element={<EpisodeDetail />} />
+        </Route>
+      </Routes>
+    </Container>
   );
 }
 
