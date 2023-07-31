@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Podcast } from '../../interfaces/podcast';
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useGetPodcasts } from '../../hooks/useGetPodcast';
 
 const usePodcastDetail = () => {

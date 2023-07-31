@@ -1,6 +1,6 @@
 import { Card, Grid } from '@mui/material';
 import PodcastDescriptionCard from '../../components/podcastDescriptionCard/podcastDescriptionCard';
-import { Outlet } from 'react-router';
+import { Outlet } from 'react-router-dom';
 import usePodcastDetail from './usePodcastDetail';
 import SkeletonPodcastDetail from '../../components/skeletons/skeletonPodcastDetail';
 

@@ -30,5 +30,5 @@ export const getEpisodesCors = async ({ queryKey }: any) => {
       });
     return episodes;
   }
-  return;
+  return {};
 };

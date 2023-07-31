@@ -8,10 +8,10 @@ export const useGetEpisodes = ({ podcastId }: any) => {
   );
   const { isError } = episodes;
 
-  const episodes2 = useQuery(
+  const episodesCors = useQuery(
     [`getPodcastsDetailCors${podcastId}`, podcastId, isError],
     getEpisodesCors
   );
 
-  return isError ? episodes2 : episodes;
+  return isError ? episodesCors : episodes;
 };
