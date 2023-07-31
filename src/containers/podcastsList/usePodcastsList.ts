@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import useGetFilteredPodcasts from '../../hooks/useGetFilteredPodcasts';
 import { useGetPodcasts } from '../../hooks/useGetPodcast';
 import { Podcast } from '../../interfaces/podcast';

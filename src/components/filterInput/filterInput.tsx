@@ -6,7 +6,7 @@ interface filterInputProps {
   filterValue?: string;
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
-};
+}
 
 const FilterInput = ({ value, onChange }: filterInputProps): ReactElement => {
   return (
@@ -17,7 +17,7 @@ const FilterInput = ({ value, onChange }: filterInputProps): ReactElement => {
       className="inputSearch"
       value={value}
       onChange={onChange}
-      type='search'
+      type="search"
     />
   );
 };

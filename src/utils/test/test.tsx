@@ -16,7 +16,15 @@ const persister = createSyncStoragePersister({
   storage: window.localStorage,
 });
 
-export const TestWrapper = ({ children, url = "/", path = "/" }: { children: React.ReactNode, url?: string, path?: string }) => {
+export const TestWrapper = ({
+  children,
+  url = '/',
+  path = '*',
+}: {
+  children: React.ReactNode;
+  url?: string;
+  path?: string;
+}) => {
   return (
     <PersistQueryClientProvider
       client={queryClient}
@@ -30,7 +38,3 @@ export const TestWrapper = ({ children, url = "/", path = "/" }: { children: Rea
     </PersistQueryClientProvider>
   );
 };
-
-
-
-
