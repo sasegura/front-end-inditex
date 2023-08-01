@@ -15,7 +15,9 @@ const useGetFilteredPodcasts = ({ podcasts, filter }: PodcastsHook) => {
         podcast?.title?.label
           ?.toLowerCase()
           .includes(filter.toString().toLowerCase()) ||
-        podcast["im:artist"]?.label?.toLowerCase().includes(filter.toString().toLowerCase())
+        podcast['im:artist']?.label
+          ?.toLowerCase()
+          .includes(filter.toString().toLowerCase())
     );
 
     setFilteredPodcast(filtered);

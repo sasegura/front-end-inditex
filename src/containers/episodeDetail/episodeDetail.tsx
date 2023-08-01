@@ -1,15 +1,23 @@
 import EpisodePlayer from '../../components/episodePlayer/episodePlayer';
+import SkeletonEpisodePlayer from '../../components/skeletons/skeletonEpisodePlayer';
 import useEpisodeDetail from './useEpisodeDetail';
 
 const EpisodeDetail = () => {
-  const { episodeName, episodeDescription, episodeAudio } = useEpisodeDetail();
+  const { isLoading, episodeName, episodeDescription, episodeAudio } =
+    useEpisodeDetail();
 
   return (
-    <EpisodePlayer
-      episodeName={episodeName}
-      episodeDescription={episodeDescription}
-      episodeAudio={episodeAudio}
-    />
+    <>
+      {isLoading ? (
+        <SkeletonEpisodePlayer />
+      ) : (
+        <EpisodePlayer
+          episodeName={episodeName}
+          episodeDescription={episodeDescription}
+          episodeAudio={episodeAudio}
+        />
+      )}
+    </>
   );
 };
 

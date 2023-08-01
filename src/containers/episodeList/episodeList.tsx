@@ -1,14 +1,10 @@
-import { useParams } from 'react-router-dom';
 import { Card, Grid } from '@mui/material';
-import { useGetEpisodes } from '../../hooks/useGetEpisodes';
 import EpisodeCounter from '../../components/episodeCouter/episodeCounter';
 import EpisodeTable from '../../components/episodeTable/episodeTable';
+import useEpisodeList from './useEpisodeList';
 
 const EpisodeList = () => {
-  const { podcastId } = useParams();
-  const { data, isLoading, isError, error } = useGetEpisodes({ podcastId });
-  const episodes = data?.results;
-  const counter = episodes?.length - 1;
+  const { isError, error, counter, isLoading, episodes } = useEpisodeList();
 
   return (
     <>
