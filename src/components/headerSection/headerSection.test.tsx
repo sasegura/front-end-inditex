@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
-import Header from './header';
 import { TestWrapper } from '../../utils/test/test';
+import HeaderSection from './headerSection';
 
 describe('Header', () => {
   test('Show the Podcaster title', async () => {
     render(
       <TestWrapper>
-        <Header isLoading={0} />
+        <HeaderSection isLoading={true} />
       </TestWrapper>
     );
     const titleElement = screen.getByText('Podcaster');
@@ -16,7 +16,7 @@ describe('Header', () => {
   test('Show the Loading component', async () => {
     render(
       <TestWrapper>
-        <Header isLoading={2} />
+        <HeaderSection isLoading={true} />
       </TestWrapper>
     );
     const titleElement = screen.getByRole('progressbar');
@@ -26,7 +26,7 @@ describe('Header', () => {
   test('Hide the Loading component', async () => {
     render(
       <TestWrapper>
-        <Header isLoading={0} />
+        <HeaderSection isLoading={false} />
       </TestWrapper>
     );
     const titleElement = screen.queryByRole('progressbar');

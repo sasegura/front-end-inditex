@@ -8,14 +8,14 @@ import PodcastDetail from './containers/podcastDetail/podcastDetail';
 import PodcastsList from './containers/podcastsList/podcastsList';
 import EpisodeList from './containers/episodeList/episodeList';
 import EpisodeDetail from './containers/episodeDetail/episodeDetail';
-import Header from './components/header/header';
+import Header from './containers/header/header';
 
 function App() {
   const isLoading = useIsFetching();
 
   return (
     <Container maxWidth="lg">
-      <Header isLoading={isLoading} />
+      <Header />
       <Routes>
         <Route path="/" element={<PodcastsList />} />
         <Route path="/podcast/:podcastId/" element={<PodcastDetail />}>

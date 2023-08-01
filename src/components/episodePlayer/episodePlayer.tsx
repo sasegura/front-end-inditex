@@ -14,7 +14,7 @@ const EpisodePlayer = ({
   episodeAudio,
 }: EpisodePlayerProps) => {
   return (
-    <Card sx={{ p: 5 }}>
+    <Card sx={{ p: 5, width: '100%' }}>
       <Typography variant="h5" gutterBottom>
         <b>{episodeName}</b>
       </Typography>

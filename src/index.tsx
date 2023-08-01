@@ -8,6 +8,7 @@ import { createSyncStoragePersister } from '@tanstack/query-sync-storage-persist
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import AppProvider from './context/appProvider';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,7 +33,9 @@ root.render(
         client={queryClient}
         persistOptions={{ persister }}
       >
-        <App />
+        <AppProvider>
+          <App />
+        </AppProvider>
       </PersistQueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
